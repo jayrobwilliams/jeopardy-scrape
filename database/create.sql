@@ -74,10 +74,6 @@ CREATE TABLE contestants (
   last_name TEXT,
   profession TEXT,
   hometown TEXT,
-  gender TEXT, /* Retrieved through Genderize.io */
-  gender_probability DECIMAL, /* Retrieved through Genderize.io */
-  latitude TEXT, /* Retrieved through Google Maps Geocoding */
-  longitude TEXT, /* Retrieved through Google Maps Geocoding */
   profession_topic_id INTEGER REFERENCES profession_topics (id),
   profession_topic_weight DECIMAL,
   profession_topics_all JSONB
