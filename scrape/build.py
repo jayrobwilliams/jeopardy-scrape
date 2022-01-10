@@ -11,15 +11,11 @@ def games(cur, data):
     else:
         return False
 
-def contestants(cur, data, game_id, findGender, findLocation):
+def contestants(cur, data, game_id):
     contestants = []
     game_contestants = []
     for i in data:
-        gender = None
-        probability = None
-        lat = None
-        lng = None
-        contestants.append((i["id"], i["first_name"], i["last_name"], i["profession"], i["home_town"], gender, probability, lat, lng))
+        contestants.append((i["id"], i["first_name"], i["last_name"], i["profession"], i["home_town"]))
         game_contestants.append((game_id, i["id"], i["game_status"]["position"], i["game_status"]["winner"], i["game_status"]["jeopardy_total"], i["game_status"]["double_jeopardy_total"], i["game_status"]["final_jeopardy_total"], i["game_status"]["final_jeopardy_wager"]))
     pg.insert_once(cur, "contestants", contestants)
     pg.insert(cur, "game_contestants", game_contestants)
